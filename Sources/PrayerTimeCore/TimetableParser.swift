@@ -46,7 +46,7 @@ public enum TimetableParser {
         var entries: [JummahEntry] = []
         for heading in try document.select("h3") {
             guard try heading.text().lowercased().contains("jumu") else { continue }
-            var sibling = heading.nextElementSibling()
+            var sibling = try heading.nextElementSibling()
             while let element = sibling, element.tagName() != "h3" {
                 if element.tagName() == "p" {
                     let label = try element.select("b, strong").text()
@@ -56,7 +56,7 @@ public enum TimetableParser {
                         entries.append(JummahEntry(label: label.isEmpty ? "Jummah" : label, value: value, id: entries.count))
                     }
                 }
-                sibling = element.nextElementSibling()
+                sibling = try element.nextElementSibling()
             }
         }
 

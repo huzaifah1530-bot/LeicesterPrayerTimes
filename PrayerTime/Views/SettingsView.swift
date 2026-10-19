@@ -152,7 +152,7 @@ struct AboutView: View {
                 Link("Timetables by Salaah Times Leicester", destination: URL(string: "https://www.salaahtimes.co.uk")!)
             } footer: { Text("An independent app. Not affiliated with Salaah Times Leicester or the listed mosques.") }
             Section("Open source") {
-                Text("HTML parsing uses SwiftSoup, © 2016–2025 Nicola D'Elia, distributed under the MIT License.")
+                Text("HTML parsing uses SwiftSoup, © 2016–2025 Nabil Chatbi, based on jsoup by Jonathan Hedley. Distributed under the MIT License.")
                 NavigationLink("Third-party licence") { LicenceView() }
             }
         }.navigationTitle("About").navigationBarTitleDisplayMode(.inline)

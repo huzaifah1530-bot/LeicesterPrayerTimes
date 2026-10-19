@@ -57,4 +57,27 @@ struct ParserTests {
         #expect(clock.on(summer) == ISO8601DateFormatter().date(from: "2026-10-24T12:30:00Z"))
         #expect(clock.on(winter) == ISO8601DateFormatter().date(from: "2026-10-26T13:30:00Z"))
     }
+
+    @Test func mosqueWithoutBeginningTimesDoesNotBorrowAnotherMosquesData() throws {
+        let schedule = try TimetableParser.schedule(fixture("musalla"), mosque: Mosque(id: 132, name: "New Parks Academy Musalla"), fetchedAt: fetchedAt)
+        #expect(schedule.days.count == 31)
+        #expect(schedule.days.allSatisfy { $0.beginning.isEmpty })
+        #expect(schedule.days.allSatisfy { $0.jamaat[.dhuhr] == nil && $0.jamaat[.asr] == nil })
+        #expect(schedule.jummah.isEmpty)
+    }
+
+    @Test func multipleJummahServicesKeepEveryLabelAndValue() throws {
+        let html = try fixture("aisha").replacingOccurrences(of: "<h3>Salaah Times This Month</h3>", with: "<p><b>Khutba</b> 14:00</p><h3>Salaah Times This Month</h3>")
+        let schedule = try TimetableParser.schedule(html, mosque: Mosque(id: 1, name: "A"), fetchedAt: fetchedAt)
+        #expect(schedule.jummah.count == 4)
+        #expect(schedule.jummah.last?.value == "14:00")
+        #expect(Set(schedule.jummah.map(\.id)).count == 4)
+    }
+
+    @Test func unexpectedColumnsAreRejectedInsteadOfShiftingTimes() throws {
+        let html = try fixture("aisha").replacingOccurrences(of: "Zohar", with: "Changed prayer")
+        #expect(throws: (any Error).self) {
+            try TimetableParser.schedule(html, mosque: Mosque(id: 1, name: "A"), fetchedAt: fetchedAt)
+        }
+    }
 }
