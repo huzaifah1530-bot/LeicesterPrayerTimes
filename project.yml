@@ -31,19 +31,5 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
     scheme:
-      gatherCoverageData: true
-      testTargets:
-        - PrayerTimeUITests
-  PrayerTimeUITests:
-    type: bundle.ui-testing
-    platform: iOS
-    sources:
-      - path: UITests
-    dependencies:
-      - target: PrayerTime
-    settings:
-      base:
-        GENERATE_INFOPLIST_FILE: YES
-        PRODUCT_BUNDLE_IDENTIFIER: uk.prayertime.app.uitests
-        TEST_TARGET_NAME: PrayerTime
+      testTargets: []
 

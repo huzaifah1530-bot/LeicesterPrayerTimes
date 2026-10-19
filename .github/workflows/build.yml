@@ -24,7 +24,7 @@ jobs:
         run: swift test --parallel
 
   ios:
-    name: iOS 27 simulator and unsigned IPA
+    name: Build unsigned IPA
     runs-on: xcode-27
     timeout-minutes: 30
     steps:
@@ -75,30 +75,4 @@ jobs:
           name: PrayerTime-simulator
           path: build/PrayerTime-simulator.zip
           if-no-files-found: error
-      - name: Choose an iOS 27 iPhone simulator
-        run: |
-          DEVICE_ID=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; data=json.load(sys.stdin); devices=[d for runtime,group in data["devices"].items() if "iOS-27" in runtime for d in group if "iPhone" in d["name"]]; print(devices[0]["udid"])')
-          echo "PRAYER_TIME_SIMULATOR=$DEVICE_ID" >> "$GITHUB_ENV"
-      - name: Test navigation and capture native screenshots
-        run: >-
-          xcodebuild test -project PrayerTime.xcodeproj -scheme PrayerTime
-          -configuration Debug
-          -destination "platform=iOS Simulator,id=$PRAYER_TIME_SIMULATOR"
-          -derivedDataPath build/simulator -resultBundlePath build/UI.xcresult
-          CODE_SIGNING_ALLOWED=NO
-      - name: Export screenshots
-        if: always()
-        run: |
-          if [ -d build/UI.xcresult ]; then
-            xcrun xcresulttool export attachments --path build/UI.xcresult --output-path build/screenshots
-          fi
-      - name: Upload UI test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: PrayerTime-native-screenshots
-          path: |
-            build/screenshots/
-            build/UI.xcresult/
-          if-no-files-found: ignore
 

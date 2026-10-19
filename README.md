@@ -27,9 +27,6 @@ with XcodeGen, then builds the iOS 27 simulator and device apps on GitHub's
 
 - `PrayerTime-unsigned-IPA`: an unsigned device app, for signing with your own tools.
 - `PrayerTime-simulator`: simulator `.app`, for a Mac with an iOS 27 simulator.
-- `PrayerTime-native-screenshots`: screenshots and Xcode results from the native
-  mosque-selection and page-navigation smoke test. This test uses the live source;
-  a source outage can fail it independently of the deterministic parser tests.
 
 **The unsigned IPA cannot be installed directly.** Sign it using SideStore/AltStore
 or your normal signing workflow. App Store/TestFlight distribution requires your
