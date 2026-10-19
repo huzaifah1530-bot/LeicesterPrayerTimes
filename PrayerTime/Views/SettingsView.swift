@@ -20,6 +20,8 @@ struct SettingsView: View {
                 }
             }
             Section("Preferences") {
+                NavigationLink { NotificationSettingsView() } label: { Label("Notifications", systemImage: "bell.badge") }
+                NavigationLink { WidgetSettingsView() } label: { Label("Widgets", systemImage: "square.grid.2x2") }
                 NavigationLink { AppearanceView() } label: { Label("Appearance", systemImage: "paintpalette") }
             }
             Section("About") {

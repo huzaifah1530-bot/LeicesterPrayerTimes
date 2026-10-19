@@ -113,6 +113,7 @@ public struct JummahEntry: Identifiable, Codable, Sendable {
 public struct NextJamaat: Sendable {
     public let prayer: Prayer
     public let date: Date
+    public init(prayer: Prayer, date: Date) { self.prayer = prayer; self.date = date }
 }
 
 public struct MosqueSchedule: Codable, Sendable {

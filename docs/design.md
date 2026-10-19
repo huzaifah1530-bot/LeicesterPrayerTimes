@@ -6,6 +6,18 @@ native menus, pickers, sheets and Liquid Glass navigation chrome. No custom
 navigation imitation, fonts, gradients, or brand palette. A blue mosque silhouette
 on a plain white background is the app icon.
 
+Monthly timetables now use SwiftUI's graphical DatePicker, constrained to the
+published date range in Europe/London. Selected-day times appear below it.
+Settings provides independent beginning/jamaat reminder toggles and minute offsets
+for each of the five daily prayers. A serial notification worker replaces the
+nearest 63 pending requests after preference, schedule or mosque changes. Missing
+times never generate reminders. Permission is requested only on user action.
+Notifications are replenished by opening/refreshing the app, not indefinitely in
+the background. WidgetKit includes all three Home Screen sizes and all three Lock
+Screen accessory families, configurable between beginning and jamaat. Timelines
+advance at published prayer changes and UK midnight. App and extension share a
+snapshot through an App Group; signing must provision it for both targets.
+
 Home shows the selected mosque, next published jamaat, today's jamaat and
 beginning times. Separate destinations show Jummah, a day-by-day monthly
 timetable and mosque details. Settings contains searchable mosque selection,

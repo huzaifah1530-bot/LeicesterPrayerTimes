@@ -7,9 +7,13 @@ Apple system colours, SF Symbols and native Liquid Glass navigation.
 
 - **Home:** your mosque, next jamaat countdown, today's jamaat and beginning times.
 - **Jummah:** the mosque's published programme, retaining Bayaan, Azaan and Khutba labels.
-- **Monthly timetable:** open any published day to see its times.
+- **Monthly timetable:** choose a day on Apple's native calendar and read its times underneath.
 - **Settings:** search and select your mosque, choose automatic/light/dark appearance,
   and learn about the data. Mosque details include address, notes and Apple Maps.
+- **Notifications:** independently enable Beginning and Jamaat reminders for each
+  prayer, with your own number of minutes before each event (zero means on time).
+- **Widgets:** small, medium and large Home Screen widgets, plus inline, circular
+  and rectangular Lock Screen widgets. Edit each widget to choose Beginning or Jamaat.
 
 No account, API key, location permission, hosted backend or analytics. Selection and
 the last successful timetable stay on the device. Missing source values remain
@@ -32,6 +36,21 @@ or your normal signing workflow. App Store/TestFlight distribution requires your
 Apple Developer account, signing setup and an archive/export workflow; this build
 does not publish to the App Store. Change `PRODUCT_BUNDLE_IDENTIFIER` in `project.yml`
 if your signing setup needs a different identifier.
+
+The IPA includes the WidgetKit extension. **When signing, preserve and provision
+the App Group `group.uk.prayertime.app` for both the app and widget extension.**
+If your signing service remaps identifiers, use the same remapped App Group in both
+targets and `WidgetData.groupID`. Signing without shared-container support leaves
+the main app usable, but widgets cannot read your selected mosque. Settings → Widgets
+reports a shared-container problem when the app cannot save widget data.
+
+Notifications are local and require permission requested from Settings → Notifications.
+The app schedules the nearest 63 enabled reminders, within the published timetable,
+and refills the queue when opened or refreshed. Open it regularly, especially at a
+new month. iOS controls delivery, Focus behaviour and widget background refresh.
+Changing mosque removes old pending reminders. No reminders are invented for
+unpublished times. Widgets can fetch the selected mosque's latest timetable in the
+background, but this does not refill the app's local notification queue.
 
 GitHub standard hosted runners are free for public repositories; private repositories
 use the account's included minutes and billing rules. Runner availability and pricing
@@ -88,6 +107,7 @@ updating their test retrieval date.
 | Path | Purpose |
 | --- | --- |
 | `PrayerTime/` | Native app, state, offline cache and screens |
+| `PrayerTimeWidgets/` | Home Screen and Lock Screen WidgetKit extension |
 | `Sources/PrayerTimeCore/` | Data types, HTML parser and network client |
 | `Tests/PrayerTimeCoreTests/` | Source fixtures and parser/time tests |
 | `project.yml` | Reproducible XcodeGen configuration |

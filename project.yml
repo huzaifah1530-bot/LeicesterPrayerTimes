@@ -17,12 +17,16 @@ targets:
     platform: iOS
     sources:
       - path: PrayerTime
+        excludes: [Info.plist]
     dependencies:
       - package: PrayerTimeCore
+      - target: PrayerTimeWidgets
+        embed: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: uk.prayertime.app
         GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: PrayerTime/Info.plist
         INFOPLIST_KEY_CFBundleDisplayName: Prayer Time
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.lifestyle
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
@@ -30,6 +34,25 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: PrayerTime/PrayerTime.entitlements
     scheme:
       testTargets: []
+  PrayerTimeWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: PrayerTimeWidgets
+        excludes: [Info.plist]
+    dependencies:
+      - package: PrayerTimeCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: uk.prayertime.app.widgets
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: PrayerTimeWidgets/Info.plist
+        INFOPLIST_KEY_CFBundleDisplayName: Prayer Time
+        CODE_SIGN_ENTITLEMENTS: PrayerTime/PrayerTime.entitlements
+        SKIP_INSTALL: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
 

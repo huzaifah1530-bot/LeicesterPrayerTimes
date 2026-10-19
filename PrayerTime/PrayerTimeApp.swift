@@ -3,6 +3,7 @@ import PrayerTimeCore
 
 @main
 struct PrayerTimeApp: App {
+    @UIApplicationDelegateAdaptor(NotificationDelegate.self) private var notificationDelegate
     @State private var store = PrayerStore()
     @AppStorage("appearance") private var appearance = "system"
     @Environment(\.scenePhase) private var scenePhase
@@ -32,6 +33,9 @@ struct RootView: View {
             Tab("Settings", systemImage: "gearshape", value: 1) {
                 NavigationStack { SettingsView() }
             }
+        }
+        .onOpenURL { url in
+            if url.scheme == "prayertime" { selection = 0 }
         }
         .sheet(isPresented: Binding(get: { store.showMosquePicker }, set: { store.showMosquePicker = $0 })) {
             NavigationStack { MosquePickerView(isSheet: true) }

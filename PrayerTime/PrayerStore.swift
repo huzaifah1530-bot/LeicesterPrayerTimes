@@ -1,9 +1,12 @@
 import Foundation
 import Observation
 import PrayerTimeCore
+import WidgetKit
 
 @MainActor @Observable
 final class PrayerStore {
+    let reminders = ReminderSettings()
+    private(set) var widgetError: String?
     private(set) var mosques: [Mosque] = []
     private(set) var selected: Mosque?
     private(set) var schedule: MosqueSchedule?
@@ -30,9 +33,11 @@ final class PrayerStore {
     func start() async {
         guard !started else { return }
         started = true
+        await reminders.refreshAuthorization()
         if let selected {
             schedule = await cache.readSchedule(id: selected.id)
             isSaved = schedule != nil
+            publishSchedule()
             await refresh()
         }
         await loadDirectory()
@@ -63,6 +68,7 @@ final class PrayerStore {
         isSaved = false
         isLoading = false
         UserDefaults.standard.set(try? JSONEncoder().encode(mosque), forKey: "selectedMosque")
+        publishSchedule()
         showMosquePicker = false
         let token = generation
         loadTask = Task {
@@ -70,11 +76,14 @@ final class PrayerStore {
             guard token == generation, !Task.isCancelled else { return }
             schedule = cached
             isSaved = cached != nil
+            publishSchedule()
             await refresh()
         }
     }
 
     func refreshIfNeeded() async {
+        await reminders.refreshAuthorization()
+        reminders.use(schedule)
         guard selected != nil else { return }
         if let schedule, Date.now.timeIntervalSince(schedule.fetchedAt) < 900,
            UKClock.calendar.isDateInToday(schedule.fetchedAt), schedule.day(on: .now) != nil { return }
@@ -91,6 +100,7 @@ final class PrayerStore {
             let fresh = try await client.schedule(for: mosque)
             guard token == generation, !Task.isCancelled else { return }
             schedule = fresh
+            publishSchedule()
             isSaved = false
             cacheError = nil
             do { try await cache.writeSchedule(fresh) }
@@ -101,6 +111,18 @@ final class PrayerStore {
             self.error = error.localizedDescription
             isSaved = schedule != nil
         }
+    }
+
+    private func publishSchedule() {
+        reminders.use(schedule)
+        guard let selected else { return }
+        do {
+            try WidgetData.save(WidgetSnapshot(mosque: selected, schedule: schedule))
+            widgetError = nil
+        } catch {
+            widgetError = "Widget sharing is unavailable. The app and widget must be signed with the same App Group."
+        }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

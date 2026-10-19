@@ -66,58 +66,42 @@ struct JummahView: View {
 struct MonthlyTimetableView: View {
     @Environment(PrayerStore.self) private var store
     @State private var mode: TimeMode = .jamaat
+    @State private var selectedDate = Date.now
 
     var body: some View {
         List {
+            if let schedule = store.schedule, let first = schedule.days.first, let last = schedule.days.last {
+                let range = first.date...last.date
+                let date = min(max(UKClock.calendar.startOfDay(for: selectedDate), range.lowerBound), range.upperBound)
+                Section {
+                    DatePicker("Choose a day", selection: Binding(get: { date }, set: { selectedDate = $0 }),
+                               in: range, displayedComponents: .date)
+                        .datePickerStyle(.graphical)
+                        .environment(\.calendar, UKClock.calendar)
+                        .environment(\.timeZone, UKClock.timeZone)
+                        .labelsHidden()
+                } header: { Text(schedule.mosque.name) }
+
             Section {
                 Picker("Times", selection: $mode) {
                     ForEach(TimeMode.allCases) { Text($0.title).tag($0) }
                 }.pickerStyle(.segmented)
             } footer: { Text("Choose a day to see all its published times. Dates follow Europe/London.") }
 
-            if let schedule = store.schedule {
-                Section {
-                    ForEach(schedule.days) { day in
-                        NavigationLink { DayTimetableView(day: day, mode: mode) } label: {
-                            VStack(alignment: .leading, spacing: 6) {
-                                HStack {
-                                    Text(UKClock.dayLabel(day.date)).font(.headline)
-                                    Spacer()
-                                    if UKClock.calendar.isDateInToday(day.date) {
-                                        Text("Today").font(.caption.weight(.semibold)).foregroundStyle(.tint)
-                                    }
-                                }
-                                let times = mode == .jamaat ? day.jamaat : day.beginning
-                                Text("Fajr \(times[.fajr]?.description ?? "—")  ·  Isha \(times[.isha]?.description ?? "—")")
-                                    .font(.subheadline).monospacedDigit().foregroundStyle(.secondary)
-                            }.padding(.vertical, 4)
-                        }
-                    }
-                } header: { Text(schedule.mosque.name) }
-            }
-        }.navigationTitle("Monthly timetable").navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-private struct DayTimetableView: View {
-    let day: PrayerDay
-    @State var mode: TimeMode
-    var body: some View {
-        List {
-            Section {
-                Picker("Times", selection: $mode) {
-                    ForEach(TimeMode.allCases) { Text($0.title).tag($0) }
-                }.pickerStyle(.segmented)
-            }
-            Section(UKClock.dayLabel(day.date)) {
+            if let day = schedule.day(on: date) {
+              Section(UKClock.dayLabel(day.date)) {
                 ForEach(mode == .jamaat ? Prayer.daily : Prayer.allCases) { prayer in
                     let times = mode == .jamaat ? day.jamaat : day.beginning
                     LabeledContent {
                         Text(times[prayer]?.description ?? "—").monospacedDigit()
                     } label: { Label(prayer.title, systemImage: prayer.symbol).labelStyle(PrayerLabelStyle()) }
                 }
+              }
+            } else {
+                Section { Text("No times were published for this day.").foregroundStyle(.secondary) }
             }
-        }.navigationTitle("Prayer times").navigationBarTitleDisplayMode(.inline)
+          }
+        }.navigationTitle("Monthly timetable").navigationBarTitleDisplayMode(.inline)
     }
 }
 
