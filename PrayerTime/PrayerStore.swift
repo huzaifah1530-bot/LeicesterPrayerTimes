@@ -83,7 +83,6 @@ final class PrayerStore {
 
     func refreshIfNeeded() async {
         await reminders.refreshAuthorization()
-        reminders.use(schedule)
         guard selected != nil else { return }
         if let schedule, Date.now.timeIntervalSince(schedule.fetchedAt) < 900,
            UKClock.calendar.isDateInToday(schedule.fetchedAt), schedule.day(on: .now) != nil { return }

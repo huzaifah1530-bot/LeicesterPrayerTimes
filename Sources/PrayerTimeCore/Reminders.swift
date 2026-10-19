@@ -32,18 +32,22 @@ public struct PlannedReminder: Sendable {
 public enum ReminderPlanner {
     /// iOS has a finite pending-request allowance. Always keep the nearest events.
     public static func plan(schedule: MosqueSchedule, rules: [ReminderRule], now: Date = .now, limit: Int = 63) -> [PlannedReminder] {
-        schedule.days.flatMap { day in
-            rules.filter(\.enabled).compactMap { rule -> PlannedReminder? in
+        var reminders: [PlannedReminder] = []
+        for day in schedule.days {
+            for rule in rules where rule.enabled {
                 let times = rule.kind == .beginning ? day.beginning : day.jamaat
-                guard let time = times[rule.prayer], let event = time.on(day.date) else { return nil }
+                guard let time = times[rule.prayer], let event = time.on(day.date) else { continue }
                 let minutes = max(0, min(rule.minutesBefore, 1_000_000))
                 let fire = event.addingTimeInterval(-Double(minutes) * 60)
-                guard fire > now else { return nil }
-                return PlannedReminder(id: "prayer.\(schedule.mosque.id).\(Int(event.timeIntervalSince1970)).\(rule.id)",
-                                       prayer: rule.prayer, kind: rule.kind, eventDate: event, fireDate: fire, minutesBefore: minutes)
+                guard fire > now else { continue }
+                let id = "prayer.\(schedule.mosque.id).\(Int(event.timeIntervalSince1970)).\(rule.id)"
+                reminders.append(PlannedReminder(id: id, prayer: rule.prayer, kind: rule.kind,
+                                                eventDate: event, fireDate: fire, minutesBefore: minutes))
             }
-        }.sorted {
+        }
+        reminders.sort {
             $0.fireDate == $1.fireDate ? $0.id < $1.id : $0.fireDate < $1.fireDate
-        }.prefix(max(0, limit)).map { $0 }
+        }
+        return Array(reminders.prefix(max(0, limit)))
     }
 }

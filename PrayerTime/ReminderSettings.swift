@@ -24,7 +24,9 @@ final class ReminderSettings {
     var isAuthorized: Bool { authorization == .authorized || authorization == .provisional || authorization == .ephemeral }
 
     func refreshAuthorization() async {
+        let previous = authorization
         authorization = await center.notificationSettings().authorizationStatus
+        if authorization != previous { queueRebuild() }
     }
 
     func requestPermission() async {
@@ -66,7 +68,6 @@ final class ReminderSettings {
     private func rebuild(version: Int) async {
         let requests = await center.pendingNotificationRequests()
         center.removePendingNotificationRequests(withIdentifiers: requests.map(\.identifier).filter { $0.hasPrefix("prayer.") })
-        center.removeAllDeliveredNotifications()
         pendingCount = 0
         scheduledThrough = nil
         error = nil

@@ -24,13 +24,15 @@ struct PrayerEntry: TimelineEntry {
     var schedule: MosqueSchedule? { snapshot?.schedule }
     var next: NextJamaat? {
         guard let schedule, schedule.day(on: date) != nil else { return nil }
-        return schedule.days.flatMap { day in
+        var events: [NextJamaat] = []
+        for day in schedule.days {
             let values = times == .jamaat ? day.jamaat : day.beginning
-            return Prayer.daily.compactMap { prayer -> NextJamaat? in
-                guard let clock = values[prayer], let event = clock.on(day.date), event > date else { return nil }
-                return NextJamaat(prayer: prayer, date: event)
+            for prayer in Prayer.daily {
+                guard let clock = values[prayer], let event = clock.on(day.date), event > date else { continue }
+                events.append(NextJamaat(prayer: prayer, date: event))
             }
-        }.min { $0.date < $1.date }
+        }
+        return events.min { $0.date < $1.date }
     }
 }
 
@@ -43,8 +45,8 @@ struct PrayerProvider: AppIntentTimelineProvider {
 
     func timeline(for configuration: PrayerWidgetConfiguration, in context: Context) async -> Timeline<PrayerEntry> {
         var snapshot = WidgetData.read()
-        if let current = snapshot,
-           current.schedule == nil || Date.now.timeIntervalSince(current.schedule!.fetchedAt) > 1800 {
+        let needsRefresh = snapshot?.schedule.map { Date.now.timeIntervalSince($0.fetchedAt) > 1800 } ?? true
+        if let current = snapshot, needsRefresh {
             if let fresh = try? await SalaahClient().schedule(for: current.mosque),
                WidgetData.read()?.mosque.id == current.mosque.id {
                 let updated = WidgetSnapshot(mosque: current.mosque, schedule: fresh)
