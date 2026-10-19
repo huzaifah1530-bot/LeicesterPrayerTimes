@@ -21,12 +21,11 @@ Push this folder to [LeicesterPrayerTimes](https://github.com/huzaifah1530-bot/L
 The **Build Prayer Time** workflow runs automatically on `main` and pull requests,
 or from **Actions → Build Prayer Time → Run workflow**.
 
-It runs Swift package tests against captured real HTML, generates an Xcode project
-with XcodeGen, then builds the iOS 27 simulator and device apps on GitHub's
-`xcode-27` macOS runner. Downloads appear under the completed run's **Artifacts**:
+It generates an Xcode project with XcodeGen, then builds and packages the device app
+on GitHub's `xcode-27` macOS runner. The workflow only produces an unsigned IPA;
+it does not run tests or build a simulator app. Download it under the completed run's **Artifacts**:
 
 - `PrayerTime-unsigned-IPA`: an unsigned device app, for signing with your own tools.
-- `PrayerTime-simulator`: simulator `.app`, for a Mac with an iOS 27 simulator.
 
 **The unsigned IPA cannot be installed directly.** Sign it using SideStore/AltStore
 or your normal signing workflow. App Store/TestFlight distribution requires your
@@ -92,7 +91,7 @@ updating their test retrieval date.
 | `Sources/PrayerTimeCore/` | Data types, HTML parser and network client |
 | `Tests/PrayerTimeCoreTests/` | Source fixtures and parser/time tests |
 | `project.yml` | Reproducible XcodeGen configuration |
-| `.github/workflows/build.yml` | Tests, simulator build and unsigned IPA |
+| `.github/workflows/build.yml` | Device build and unsigned IPA |
 | `scripts/make_icon.py` | Reproducible original mosque icon; requires Pillow |
 | `docs/design.md` | Design and data decisions |
 

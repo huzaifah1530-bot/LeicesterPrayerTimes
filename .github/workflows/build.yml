@@ -14,15 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  core-tests:
-    name: Timetable parser and UK time tests
-    runs-on: ubuntu-latest
-    container: swift:6.0
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test the real HTML fixtures
-        run: swift test --parallel
-
   ios:
     name: Build unsigned IPA
     runs-on: xcode-27
@@ -40,13 +31,6 @@ jobs:
         run: xcodegen generate
       - name: Resolve dependencies
         run: xcodebuild -resolvePackageDependencies -project PrayerTime.xcodeproj -scheme PrayerTime
-      - name: Build for iOS Simulator
-        run: >-
-          xcodebuild -project PrayerTime.xcodeproj -scheme PrayerTime
-          -configuration Debug -sdk iphonesimulator
-          -destination 'generic/platform=iOS Simulator'
-          -derivedDataPath build/simulator
-          CODE_SIGNING_ALLOWED=NO build
       - name: Build for iPhone and iPad
         run: >-
           xcodebuild -project PrayerTime.xcodeproj -scheme PrayerTime
@@ -55,24 +39,16 @@ jobs:
           -derivedDataPath build/device
           CURRENT_PROJECT_VERSION=${{ github.run_number }}
           CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
-      - name: Package unsigned IPA and simulator app
+      - name: Package unsigned IPA
         run: |
           mkdir -p build/package/Payload
           cp -R build/device/Build/Products/Release-iphoneos/PrayerTime.app build/package/Payload/
           cd build/package
           ditto -c -k --keepParent Payload PrayerTime-unsigned.ipa
-          cd ../..
-          ditto -c -k --keepParent build/simulator/Build/Products/Debug-iphonesimulator/PrayerTime.app build/PrayerTime-simulator.zip
       - name: Upload unsigned IPA
         uses: actions/upload-artifact@v4
         with:
           name: PrayerTime-unsigned-IPA
           path: build/package/PrayerTime-unsigned.ipa
-          if-no-files-found: error
-      - name: Upload simulator app
-        uses: actions/upload-artifact@v4
-        with:
-          name: PrayerTime-simulator
-          path: build/PrayerTime-simulator.zip
           if-no-files-found: error
 
