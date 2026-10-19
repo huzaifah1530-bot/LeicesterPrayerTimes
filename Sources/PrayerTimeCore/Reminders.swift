@@ -27,6 +27,17 @@ public struct PlannedReminder: Sendable {
     public let eventDate: Date
     public let fireDate: Date
     public let minutesBefore: Int
+
+    /// UTC components identify one exact instant, including the repeated UK hour
+    /// when daylight saving ends. Prayer and display times remain London-local.
+    public var triggerComponents: DateComponents {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: fireDate)
+        components.calendar = calendar
+        components.timeZone = calendar.timeZone
+        return components
+    }
 }
 
 public enum ReminderPlanner {

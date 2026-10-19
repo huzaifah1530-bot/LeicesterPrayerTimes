@@ -82,10 +82,7 @@ final class ReminderSettings {
             content.body = "\(when) at \(schedule.mosque.name) · \(UKClock.timeLabel(event.eventDate)) UK time"
             content.sound = .default
             content.threadIdentifier = "prayer-times"
-            var components = UKClock.calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: event.fireDate)
-            components.calendar = UKClock.calendar
-            components.timeZone = UKClock.timeZone
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: event.triggerComponents, repeats: false)
             do {
                 try await center.add(UNNotificationRequest(identifier: event.id, content: content, trigger: trigger))
                 pendingCount += 1

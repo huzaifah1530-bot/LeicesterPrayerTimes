@@ -36,4 +36,15 @@ struct ReminderTests {
         #expect(result.allSatisfy { $0.fireDate > now && $0.fireDate == $0.eventDate })
         #expect(result.map(\.fireDate) == result.map(\.fireDate).sorted())
     }
+
+    @Test func notificationComponentsPreserveTheExactInstantAcrossTheRepeatedDSTHour() throws {
+        let now = ISO8601DateFormatter().date(from: "2026-10-25T00:00:00Z")!
+        let rules = [ReminderRule(prayer: .fajr, kind: .jamaat, enabled: true, minutesBefore: 300)]
+        let events = ReminderPlanner.plan(schedule: try schedule(), rules: rules, now: now)
+        for event in events {
+            let components = event.triggerComponents
+            #expect(components.timeZone?.secondsFromGMT(for: event.fireDate) == 0)
+            #expect(components.calendar?.date(from: components) == event.fireDate)
+        }
+    }
 }
