@@ -31,7 +31,7 @@ struct NotificationSettingsView: View {
                     }
                 }
             }
-            Section("Scheduled reminders") {
+            Section {
                 LabeledContent("Upcoming", value: "\(reminders.pendingCount)")
                 if let date = reminders.scheduledThrough {
                     LabeledContent("Scheduled through", value: UKClock.timestampLabel(date))
@@ -42,6 +42,8 @@ struct NotificationSettingsView: View {
                     Text("No upcoming published times match your reminders. Refresh your mosque's timetable.").foregroundStyle(.secondary)
                 }
                 if let error = reminders.error { Text(error).foregroundStyle(.secondary) }
+            } header: {
+                Text("Scheduled reminders")
             } footer: {
                 Text("iOS limits pending reminders. The nearest 63 are scheduled, using your mosque's published times. Open the app regularly to refill them and load each new month's timetable. Missing times never generate reminders.")
             }
