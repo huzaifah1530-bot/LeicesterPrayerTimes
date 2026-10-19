@@ -20,6 +20,14 @@ public enum UKClock {
         let components = calendar.dateComponents([.hour, .minute], from: date)
         return String(format: "%02d:%02d", components.hour ?? 0, components.minute ?? 0)
     }
+
+    public static func timestampLabel(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_GB")
+        formatter.timeZone = timeZone
+        formatter.dateFormat = "d MMM yyyy, HH:mm z"
+        return formatter.string(from: date)
+    }
 }
 
 public struct Mosque: Identifiable, Hashable, Codable, Sendable {

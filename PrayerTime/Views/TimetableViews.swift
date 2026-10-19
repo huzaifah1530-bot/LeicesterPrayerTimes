@@ -53,7 +53,7 @@ struct JummahView: View {
                 }
                 Section {
                     Link("Check mosque source", destination: schedule.mosque.sourceURL)
-                    Text("Retrieved \(schedule.fetchedAt.formatted(date: .abbreviated, time: .shortened))")
+                    Text("Retrieved \(UKClock.timestampLabel(schedule.fetchedAt))")
                         .font(.footnote).foregroundStyle(.secondary)
                 } footer: {
                     Text("Shown exactly as published, including multiple services where available. Programmes can change; check your mosque's latest announcement. All programme times are UK local time.")
