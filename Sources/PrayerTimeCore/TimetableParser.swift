@@ -52,7 +52,7 @@ public enum TimetableParser {
                     let label = try element.select("b, strong").text()
                     let full = try element.text()
                     let value = label.isEmpty ? full : String(full.dropFirst(label.count)).trimmingCharacters(in: .whitespacesAndNewlines)
-                    if !value.isEmpty {
+                    if !full.isEmpty {
                         entries.append(JummahEntry(label: label.isEmpty ? "Jummah" : label, value: value, id: entries.count))
                     }
                 }

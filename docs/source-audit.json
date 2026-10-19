@@ -1,0 +1,2140 @@
+{
+  "mosques": 66,
+  "audited": [
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 15:30"
+      ],
+      "id": 83,
+      "name": "Al Ehsaan Academy"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:30"
+      ],
+      "id": 54,
+      "name": "Al Furqan Centre"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Khutba 13:30"
+      ],
+      "id": 94,
+      "name": "Al Ma\u2019rifah Academy"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 12:55",
+        "Azaan 13:15",
+        "Khutba 13:25",
+        "Second Jumu'ah",
+        "Bayaan 14:00",
+        "Khutba 14:20"
+      ],
+      "id": 33,
+      "name": "As-Salaam (The Peace Centre)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:45"
+      ],
+      "id": 148,
+      "name": "Baytul Ihsaan (Darul Fath)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:15"
+      ],
+      "id": 22,
+      "name": "Beaumont Leys Muslims"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:45",
+        "Khutba 13:25"
+      ],
+      "id": 3,
+      "name": "Central Mosque"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Khutba 13:15",
+        "Second Jumu'ah",
+        "Khutba 14:00"
+      ],
+      "id": 85,
+      "name": "City Retreat Leicester"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Khutba 13:30"
+      ],
+      "id": 58,
+      "name": "Coleman Lodge Prayer Room"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 35,
+      "name": "Darul Arqam Education Centre"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 31
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Azaan 14:35",
+        "Khutba 14:45"
+      ],
+      "id": 134,
+      "name": "Darul Ihsaan (The Mayflower)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:30",
+        "Khutba 13:30"
+      ],
+      "id": 48,
+      "name": "Darus-Salam Masjid"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Bayaan 14:00",
+        "Khutba 14:30",
+        "Third Jumu'ah",
+        "Khutba 15:30"
+      ],
+      "id": 29,
+      "name": "Faizan-E-Madina"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Khutba 13:30"
+      ],
+      "id": 45,
+      "name": "Faiz-E-Raza Academy"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 14:30"
+      ],
+      "id": 30,
+      "name": "Gulzar-E-Madina"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 12:50",
+        "Khutba 13:25",
+        "Second Jumu'ah",
+        "Bayaan 14:35",
+        "Khutba 15:00"
+      ],
+      "id": 15,
+      "name": "Islamic Da'wah Academy (IDA)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Khutba 13:30"
+      ],
+      "id": 2,
+      "name": "Jame Masjid"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:55",
+        "Khutba 13:25"
+      ],
+      "id": 199,
+      "name": "Jamia Sufiya"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:10"
+      ],
+      "id": 116,
+      "name": "Khadijatul Kubra Mosque"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 12:45",
+        "Khutba 13:25",
+        "Second Jumu'ah",
+        "Khutba 15:45"
+      ],
+      "id": 27,
+      "name": "Leicester Mosque (Sutherland St)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [],
+      "id": 25,
+      "name": "Madani Education Centre"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 19
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 8,
+      "name": "Madani School Masjid"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Khutba 13:35"
+      ],
+      "id": 21,
+      "name": "Madrasah Baytul 'ilm (Masjid Ibraheem)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:55",
+        "Khutba 13:25"
+      ],
+      "id": 72,
+      "name": "Madrasah Hamidiya (HCO)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 12:50",
+        "Azaan 13:20",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 14:00"
+      ],
+      "id": 38,
+      "name": "Madrasah Ta'leemul Qur'an (Knighton CEC)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20"
+      ],
+      "id": 26,
+      "name": "Majlis e Dawatul Haq"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:20"
+      ],
+      "id": 87,
+      "name": "Markaz Attawheed"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [],
+      "id": 55,
+      "name": "Markaz Quba"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 13:55",
+        "Third Jumu'ah",
+        "Khutba 14:30"
+      ],
+      "id": 88,
+      "name": "Masjid Abdullah ibn Mas'ud"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 14:00"
+      ],
+      "id": 4,
+      "name": "Masjid Abu Bakr"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 9,
+      "name": "Masjid Abu Hurairah"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 14:10"
+      ],
+      "id": 143,
+      "name": "Masjid Adam (Oadby Community Hub)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Shafi Asr",
+            "Asr",
+            "Shafi Eisha",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:55",
+        "Azaan 13:15",
+        "Khutba 13:25"
+      ],
+      "id": 1,
+      "name": "Masjid Aisha"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 10,
+      "name": "Masjid Al Furqan"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:15"
+      ],
+      "id": 51,
+      "name": "Masjid Al-Ansar"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20"
+      ],
+      "id": 18,
+      "name": "Masjid Al-Falah"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:15"
+      ],
+      "id": 19,
+      "name": "Masjid Al-Huda"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20"
+      ],
+      "id": 11,
+      "name": "Masjid Ali"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 17,
+      "name": "Masjid Al-Khaleel (MIQ)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:25"
+      ],
+      "id": 192,
+      "name": "Masjid An Noor (Belgrave)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:45",
+        "Azaan 13:20"
+      ],
+      "id": 16,
+      "name": "Masjid An Noor (Highfields)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Azaan 13:20",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Azaan 15:05",
+        "Khutba 15:15"
+      ],
+      "id": 24,
+      "name": "Masjid Ar-Rahmaan"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:15"
+      ],
+      "id": 5,
+      "name": "Masjid At-Taqwa"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:25"
+      ],
+      "id": 32,
+      "name": "Masjid Bilal"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:15"
+      ],
+      "id": 131,
+      "name": "Masjid Darul Sunnah (Welford Rd)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:35"
+      ],
+      "id": 20,
+      "name": "Masjid e Baitul Mukarram"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 12:40",
+        "Azaan 13:00",
+        "Khutba 13:10",
+        "Second Jumu'ah",
+        "Azaan 15:20",
+        "Khutba 15:30"
+      ],
+      "id": 46,
+      "name": "Masjid Fatima Zahra R.A"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 37,
+      "name": "Masjid Mu'adh ibn Jabal"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 76,
+      "name": "Masjid Muhammad"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:15",
+        "Khutba 13:30"
+      ],
+      "id": 36,
+      "name": "Masjid Noor-ul-Islam"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:30"
+      ],
+      "id": 34,
+      "name": "Masjid Quba"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:15"
+      ],
+      "id": 62,
+      "name": "Masjid Salahuddin"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:20"
+      ],
+      "id": 47,
+      "name": "Masjid Taybah"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 12,
+      "name": "Masjid Ul Imam il Bukhari"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise",
+            "Zohar",
+            "Asr",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:50",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 13,
+      "name": "Masjid Umar"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 21
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:30"
+      ],
+      "id": 61,
+      "name": "Masjid Usman (Markaz)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Bayaan 15:00",
+        "Khutba 15:30"
+      ],
+      "id": 31,
+      "name": "Masjid-al-Ameen Oadby"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Khutba 13:15"
+      ],
+      "id": 201,
+      "name": "Masjid-us-Sunnah"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 12:55",
+        "Azaan 13:15",
+        "Khutba 13:25",
+        "Second Jumu'ah",
+        "Azaan 13:50",
+        "Khutba 14:00"
+      ],
+      "id": 84,
+      "name": "Mostyn Street Musalla"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 62
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [],
+      "id": 132,
+      "name": "New Parks Academy Musalla"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Azaan 14:00",
+        "Khutba 14:10"
+      ],
+      "id": 14,
+      "name": "Northfields Education Centre"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:15",
+        "Khutba 13:20"
+      ],
+      "id": 56,
+      "name": "Raza Centre"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 12:55",
+        "Khutba 13:30"
+      ],
+      "id": 119,
+      "name": "Sayyidah Zahra Centre"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "Bayaan 13:00",
+        "Azaan 13:20",
+        "Khutba 13:30"
+      ],
+      "id": 43,
+      "name": "Tajdaar-E-Madina"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 14:10"
+      ],
+      "id": 108,
+      "name": "The Hamilton Hub (Darul Fath)"
+    },
+    {
+      "tables": {
+        "jamaat-times": {
+          "headers": [
+            "Date",
+            "Fajr",
+            "Zohar",
+            "Asr",
+            "Maghrib",
+            "Eisha"
+          ],
+          "days": 31,
+          "missing_cells": 0
+        },
+        "beginning-times": {
+          "headers": [
+            "Date",
+            "Dawn/ Sehri End",
+            "Sunrise"
+          ],
+          "days": 0,
+          "missing_cells": 0
+        }
+      },
+      "jummah": [
+        "First Jumu'ah",
+        "Khutba 13:30",
+        "Second Jumu'ah",
+        "Khutba 15:30"
+      ],
+      "id": 79,
+      "name": "Usmani Mosque"
+    }
+  ]
+}

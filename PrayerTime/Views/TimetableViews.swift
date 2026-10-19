@@ -42,7 +42,12 @@ struct JummahView: View {
                 } else {
                     Section("Published programme") {
                         ForEach(schedule.jummah) { entry in
-                            LabeledContent(entry.label, value: entry.value).monospacedDigit()
+                            if entry.value.isEmpty {
+                                Text(entry.label).font(.headline).padding(.top, 4)
+                                    .accessibilityAddTraits(.isHeader)
+                            } else {
+                                LabeledContent(entry.label, value: entry.value).monospacedDigit()
+                            }
                         }
                     }
                 }

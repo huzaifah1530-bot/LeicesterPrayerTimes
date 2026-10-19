@@ -12,6 +12,7 @@ struct SettingsView: View {
                         Text(store.selected?.name ?? "Choose a mosque").foregroundStyle(.secondary)
                     } label: { Label("Mosque", systemImage: "building.2") }
                 }
+                .accessibilityIdentifier("choose-mosque")
                 if let mosque = store.selected {
                     NavigationLink { MosqueDetailView(mosque: mosque) } label: {
                         Label("Mosque details", systemImage: "info.circle")
@@ -65,6 +66,7 @@ struct MosquePickerView: View {
                         }.padding(.vertical, 5).contentShape(Rectangle())
                     }
                     .accessibilityAddTraits(store.selected?.id == mosque.id ? [.isSelected] : [])
+                    .accessibilityIdentifier("mosque-\(mosque.id)")
                 }
             } header: { Text("Leicester") } footer: {
                 if !filtered.isEmpty { Text("\(filtered.count) mosques · Salaah Times Leicester") }

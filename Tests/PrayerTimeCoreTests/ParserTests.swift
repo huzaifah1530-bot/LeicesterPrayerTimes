@@ -74,6 +74,12 @@ struct ParserTests {
         #expect(Set(schedule.jummah.map(\.id)).count == 4)
     }
 
+    @Test func realThreeServiceMosquePreservesServiceHeadings() throws {
+        let schedule = try TimetableParser.schedule(fixture("multiple-jummah"), mosque: Mosque(id: 29, name: "Faizan-E-Madina"), fetchedAt: fetchedAt)
+        #expect(schedule.jummah.filter { $0.value.isEmpty }.map(\.label) == ["First Jumu'ah", "Second Jumu'ah", "Third Jumu'ah"])
+        #expect(schedule.jummah.filter { $0.label == "Khutba" }.map(\.value) == ["13:30", "14:30", "15:30"])
+    }
+
     @Test func unexpectedColumnsAreRejectedInsteadOfShiftingTimes() throws {
         let html = try fixture("aisha").replacingOccurrences(of: "Zohar", with: "Changed prayer")
         #expect(throws: (any Error).self) {

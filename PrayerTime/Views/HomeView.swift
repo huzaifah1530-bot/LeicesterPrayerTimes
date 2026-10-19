@@ -19,6 +19,7 @@ struct HomeView: View {
                 } actions: {
                     Button("Choose a mosque", systemImage: "plus") { store.showMosquePicker = true }
                         .buttonStyle(.glassProminent)
+                        .accessibilityIdentifier("onboarding-choose-mosque")
                 }
             }
         }
@@ -108,7 +109,9 @@ struct HomeView: View {
 
                 Section {
                     NavigationLink { JummahView() } label: { Label("Jummah", systemImage: "person.3") }
+                        .accessibilityIdentifier("jummah")
                     NavigationLink { MonthlyTimetableView() } label: { Label("Monthly timetable", systemImage: "calendar") }
+                        .accessibilityIdentifier("monthly-timetable")
                 }
                 Section {
                     HStack {
@@ -164,6 +167,7 @@ private struct NextPrayerView: View {
         }
         .padding(.vertical, 10)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("next-prayer")
     }
 
     private var time: some View {
