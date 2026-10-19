@@ -59,6 +59,7 @@ final class PrayerStore {
         selected = mosque
         schedule = nil
         error = nil
+        cacheError = nil
         isSaved = false
         isLoading = false
         UserDefaults.standard.set(try? JSONEncoder().encode(mosque), forKey: "selectedMosque")

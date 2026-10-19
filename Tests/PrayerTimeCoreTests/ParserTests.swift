@@ -86,4 +86,29 @@ struct ParserTests {
             try TimetableParser.schedule(html, mosque: Mosque(id: 1, name: "A"), fetchedAt: fetchedAt)
         }
     }
+
+    @Test func dateInferenceCrossesYearBoundaryAndKeepsEmptyCellsInPlace() throws {
+        let html = """
+        <div id="jamaat-times"><table>
+        <tr><th>Date</th><th>Fajr</th><th>Zohar</th><th>Asr</th><th>Maghrib</th><th>Eisha</th></tr>
+        <tr><td>Fri 1 Jan</td><td>07:00</td><td></td><td>15:00</td><td>16:00</td><td>18:00</td></tr>
+        </table></div>
+        """
+        let december = ISO8601DateFormatter().date(from: "2026-12-31T23:00:00Z")!
+        let schedule = try TimetableParser.schedule(html, mosque: Mosque(id: 1, name: "A"), fetchedAt: december)
+        #expect(schedule.days.first?.date == ISO8601DateFormatter().date(from: "2027-01-01T00:00:00Z"))
+        #expect(schedule.days.first?.jamaat[.dhuhr] == nil)
+        #expect(schedule.days.first?.jamaat[.asr]?.description == "15:00")
+        #expect(schedule.days.first?.jamaat[.maghrib]?.description == "16:00")
+    }
+
+    @Test func previousMonthsDataIsNotPresentedAsToday() throws {
+        let schedule = try TimetableParser.schedule(fixture("aisha"), mosque: Mosque(id: 1, name: "A"), fetchedAt: fetchedAt)
+        let november = ISO8601DateFormatter().date(from: "2026-11-01T12:00:00Z")!
+        #expect(schedule.day(on: november) == nil)
+        #expect(schedule.nextJamaat(after: november) == nil)
+        #expect(throws: (any Error).self) {
+            try TimetableParser.schedule(fixture("aisha"), mosque: Mosque(id: 1, name: "A"), fetchedAt: ISO8601DateFormatter().date(from: "2027-07-19T12:00:00Z")!)
+        }
+    }
 }
