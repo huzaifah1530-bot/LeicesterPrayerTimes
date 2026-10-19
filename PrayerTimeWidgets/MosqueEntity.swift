@@ -47,15 +47,20 @@ private actor WidgetDirectory {
 
 /// Lives in the widget's own container, and works without App Group entitlements.
 enum WidgetLocalCache {
-    static var directoryURL: URL { URL.cachesDirectory.appending(path: "widget-mosques.json") }
+    private static var folder: URL {
+        let folder = URL.cachesDirectory.appending(path: "PrayerTimeWidgets", directoryHint: .isDirectory)
+        try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        return folder
+    }
+    static var directoryURL: URL { folder.appending(path: "widget-mosques.json") }
     static func read(_ mosque: Mosque) -> MosqueSchedule? {
-        let file = URL.cachesDirectory.appending(path: "widget-mosque-\(mosque.id).json")
+        let file = folder.appending(path: "widget-mosque-\(mosque.id).json")
         guard let data = try? Data(contentsOf: file), let schedule = try? JSONDecoder().decode(MosqueSchedule.self, from: data),
               schedule.mosque.id == mosque.id else { return nil }
         return schedule
     }
     static func save(_ schedule: MosqueSchedule) {
-        let file = URL.cachesDirectory.appending(path: "widget-mosque-\(schedule.mosque.id).json")
+        let file = folder.appending(path: "widget-mosque-\(schedule.mosque.id).json")
         try? JSONEncoder().encode(schedule).write(to: file, options: .atomic)
     }
 }
