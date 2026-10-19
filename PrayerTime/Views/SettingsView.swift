@@ -156,7 +156,7 @@ struct AboutView: View {
                     Text("Prayer Time").font(.title2.bold())
                     Text("A little closer to your mosque.").font(.subheadline).foregroundStyle(.secondary)
                 }.frame(maxWidth: .infinity).padding(.vertical, 20)
-                LabeledContent("Version", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0")
+                LabeledContent("Version", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.1")
             }
             Section {
                 Link("Project on GitHub", destination: URL(string: "https://github.com/huzaifah1530-bot/LeicesterPrayerTimes")!)
