@@ -116,6 +116,7 @@ final class PrayerStore {
         reminders.use(schedule)
         guard let selected else { return }
         do {
+            try WidgetData.select(selected)
             try WidgetData.save(WidgetSnapshot(mosque: selected, schedule: schedule))
             widgetError = nil
         } catch {
