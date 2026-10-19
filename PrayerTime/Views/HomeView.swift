@@ -84,7 +84,7 @@ struct HomeView: View {
                         }.pickerStyle(.segmented).listRowSeparator(.hidden)
 
                         ForEach(mode == .jamaat ? Prayer.daily : Prayer.allCases) { prayer in
-                            let time = mode == .jamaat ? day.jamaat[prayer] : day.beginning[prayer]
+                            let time = mode == .jamaat ? day.jamaat[prayer] : day.effectiveBeginning[prayer]
                             NavigationLink {
                                 PrayerDetailView(prayer: prayer, day: day)
                             } label: {
@@ -98,7 +98,7 @@ struct HomeView: View {
                             }
                         }
                     } header: { Text("Today's prayers") } footer: {
-                        Text(mode == .jamaat ? "Jamaat is the congregation time at your mosque." : "Beginning times are published by your mosque. A dash means no time was supplied. Maghrib appears only when a separate beginning time is published.")
+                        Text(mode == .jamaat ? "Jamaat is the congregation time at your mosque." : "A dash means no time was supplied. When no separate Maghrib beginning time is published, its jamaat time is used.")
                     }
                 } else {
                     Section {

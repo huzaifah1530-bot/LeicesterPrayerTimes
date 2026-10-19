@@ -46,7 +46,7 @@ public enum ReminderPlanner {
         var reminders: [PlannedReminder] = []
         for day in schedule.days {
             for rule in rules where rule.enabled {
-                let times = rule.kind == .beginning ? day.beginning : day.jamaat
+                let times = rule.kind == .beginning ? day.effectiveBeginning : day.jamaat
                 guard let time = times[rule.prayer], let event = time.on(day.date) else { continue }
                 let minutes = max(0, min(rule.minutesBefore, 1_000_000))
                 let fire = event.addingTimeInterval(-Double(minutes) * 60)

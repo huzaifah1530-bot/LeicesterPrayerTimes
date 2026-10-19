@@ -7,7 +7,10 @@ struct PrayerDetailView: View {
     var body: some View {
         List {
             Section(UKClock.dayLabel(day.date)) {
-                LabeledContent("Beginning", value: day.beginning[prayer]?.description ?? "Not published")
+                LabeledContent("Beginning", value: day.effectiveBeginning[prayer]?.description ?? "Not published")
+                if prayer == .maghrib && day.usesMaghribJamaatForBeginning {
+                    Text("Uses the published jamaat time because no separate Maghrib beginning time is available.").font(.footnote).foregroundStyle(.secondary)
+                }
                 if Prayer.daily.contains(prayer) {
                     LabeledContent("Jamaat", value: day.jamaat[prayer]?.description ?? "Not published")
                 }
@@ -91,7 +94,7 @@ struct MonthlyTimetableView: View {
             if let day = schedule.day(on: date) {
               Section(UKClock.dayLabel(day.date)) {
                 ForEach(mode == .jamaat ? Prayer.daily : Prayer.allCases) { prayer in
-                    let times = mode == .jamaat ? day.jamaat : day.beginning
+                    let times = mode == .jamaat ? day.jamaat : day.effectiveBeginning
                     LabeledContent {
                         Text(times[prayer]?.description ?? "—").monospacedDigit()
                     } label: { Label(prayer.title, systemImage: prayer.symbol).labelStyle(PrayerLabelStyle()) }

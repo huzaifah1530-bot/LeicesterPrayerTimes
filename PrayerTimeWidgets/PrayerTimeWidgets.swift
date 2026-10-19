@@ -23,17 +23,13 @@ struct PrayerEntry: TimelineEntry {
     let snapshot: WidgetSnapshot?
     let times: WidgetTimes
     var schedule: MosqueSchedule? { snapshot?.schedule }
-    var next: NextJamaat? {
+    var next: WidgetPrayerEvent? {
         guard let schedule, schedule.day(on: date) != nil else { return nil }
-        var events: [NextJamaat] = []
-        for day in schedule.days {
-            let values = times == .jamaat ? day.jamaat : day.beginning
-            for prayer in Prayer.daily {
-                guard let clock = values[prayer], let event = clock.on(day.date), event > date else { continue }
-                events.append(NextJamaat(prayer: prayer, date: event))
-            }
-        }
-        return events.min { $0.date < $1.date }
+        return schedule.nextWidgetPrayer(after: date, jamaat: times == .jamaat)
+    }
+    var rows: [WidgetPrayerTime] {
+        guard let schedule, let day = schedule.day(on: date) else { return [] }
+        return schedule.widgetRows(for: day, jamaat: times == .jamaat)
     }
 }
 
@@ -70,9 +66,8 @@ struct PrayerProvider: AppIntentTimelineProvider {
         var dates = [now]
         if let schedule = snapshot?.schedule {
             for day in schedule.days {
-                let values = configuration.times == .jamaat ? day.jamaat : day.beginning
-                for time in values.values {
-                    if let date = time.on(day.date), date > now, date < horizon {
+                for row in schedule.widgetRows(for: day, jamaat: configuration.times == .jamaat) {
+                    if let date = row.time?.on(day.date), date > now, date < horizon {
                         dates.append(date.addingTimeInterval(1))
                     }
                 }
@@ -106,20 +101,21 @@ struct PrayerWidgetView: View {
             switch family {
             case .accessoryInline:
                 if let next = entry.next {
-                    Label("\(next.prayer.title) \(UKClock.timeLabel(next.date))", systemImage: next.prayer.symbol)
+                    Label("\(next.row.title) \(next.row.detail) \(UKClock.timeLabel(next.date))", systemImage: next.row.symbol)
                 } else { Text("Edit widget to choose mosque") }
             case .accessoryCircular:
                 VStack(spacing: 2) {
-                    Image(systemName: entry.next?.prayer.symbol ?? "building.2")
-                    Text(entry.next?.prayer.title ?? "Edit widget").font(.caption2)
+                    Image(systemName: entry.next?.row.symbol ?? "building.2")
+                    Text(entry.next?.row.title ?? "Edit widget").font(.caption2)
                     if let next = entry.next { Text(UKClock.timeLabel(next.date)).font(.caption2).monospacedDigit() }
+                    if let next = entry.next, !next.row.detail.isEmpty { Text(next.row.detail).font(.system(size: 8)) }
                 }.minimumScaleFactor(0.7)
             case .accessoryRectangular:
                 VStack(alignment: .leading, spacing: 3) {
                     if let next = entry.next {
-                        Label("\(next.prayer.title) · \(UKClock.timeLabel(next.date))", systemImage: next.prayer.symbol).font(.headline)
+                        Label("\(next.row.title) · \(UKClock.timeLabel(next.date))", systemImage: next.row.symbol).font(.headline)
                         Text(entry.snapshot?.mosque.name ?? "Prayer Time").font(.caption).lineLimit(1)
-                        Text(entry.times == .jamaat ? "Jamaat" : "Beginning").font(.caption2)
+                        Text(next.row.detail.isEmpty ? (entry.times == .jamaat ? "Jamaat" : "Beginning") : next.row.detail).font(.caption2)
                     } else {
                         Label("Prayer Time", systemImage: "building.2")
                         Text(entry.snapshot == nil ? "Edit widget to choose mosque" : "Tap to refresh times").font(.caption)
@@ -138,28 +134,26 @@ struct PrayerWidgetView: View {
             Label(entry.snapshot?.mosque.name ?? "Prayer Time", systemImage: "building.2")
                 .font(.caption.weight(.medium)).foregroundStyle(.secondary).lineLimit(1)
             if let next = entry.next {
-                HStack(alignment: .firstTextBaseline) {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("NEXT \(entry.times == .jamaat ? "JAMAAT" : "BEGINNING")").font(.caption2).foregroundStyle(.secondary)
-                        Label(next.prayer.title, systemImage: next.prayer.symbol)
-                            .font(.headline).widgetAccentable()
+                if family == .systemSmall {
+                    nextLabel(next)
+                    Text(UKClock.timeLabel(next.date)).font(.largeTitle.weight(.semibold)).monospacedDigit().minimumScaleFactor(0.7)
+                } else {
+                    HStack {
+                        nextLabel(next)
+                        Spacer()
+                        Text(UKClock.timeLabel(next.date)).font(.title.weight(.semibold)).monospacedDigit().minimumScaleFactor(0.7)
                     }
-                    if family != .systemSmall { Spacer() }
                 }
-                Text(UKClock.timeLabel(next.date)).font(family == .systemSmall ? .largeTitle.weight(.semibold) : .title.weight(.semibold)).monospacedDigit().minimumScaleFactor(0.7)
                 if family == .systemSmall {
                     Text(next.date, style: .relative).font(.caption).foregroundStyle(.secondary)
-                } else if let day = entry.schedule?.day(on: entry.date) {
+                } else if !entry.rows.isEmpty {
                     if family == .systemLarge {
                         Divider()
-                        ForEach(Prayer.daily) { prayer in row(prayer, day: day) }
+                        ForEach(entry.rows) { row in prayerRow(row) }
                     } else {
                         HStack {
                             ForEach(Prayer.daily) { prayer in
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text(prayer.title).font(.caption2).foregroundStyle(.secondary)
-                                    Text(values(day)[prayer]?.description ?? "—").font(.caption.weight(.medium)).monospacedDigit()
-                                }.frame(maxWidth: .infinity, alignment: .leading)
+                                compactColumn(prayer)
                             }
                         }
                     }
@@ -174,13 +168,37 @@ struct PrayerWidgetView: View {
         }
     }
 
-    private func values(_ day: PrayerDay) -> [Prayer: ClockTime] { entry.times == .jamaat ? day.jamaat : day.beginning }
+    private func nextLabel(_ next: WidgetPrayerEvent) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(next.row.detail.isEmpty ? "NEXT \(entry.times == .jamaat ? "JAMAAT" : "BEGINNING")" : "NEXT · \(next.row.detail.uppercased())")
+                .font(.caption2).foregroundStyle(.secondary)
+            Label(next.row.title, systemImage: next.row.symbol).font(.headline).widgetAccentable()
+        }
+    }
 
-    private func row(_ prayer: Prayer, day: PrayerDay) -> some View {
+    private func compactColumn(_ prayer: Prayer) -> some View {
+        let rows = entry.rows.filter { $0.slot == prayer }
+        let isJummah = rows.first?.id.hasPrefix("jummah") == true
+        let details = Set(rows.map(\.detail))
+        return VStack(alignment: .leading, spacing: 2) {
+            Text(isJummah ? "Jummah" : prayer.title).font(.caption2).foregroundStyle(.secondary)
+            ForEach(rows) { row in
+                Text(row.time?.description ?? "—").font(.caption.weight(.medium)).monospacedDigit()
+                    .accessibilityLabel("\(row.title), \(row.detail), \(row.time?.description ?? "not published")")
+                if isJummah && details.count > 1 { Text(row.detail).font(.caption2).foregroundStyle(.secondary) }
+            }
+            if let detail = rows.first?.detail, !detail.isEmpty, details.count == 1 {
+                Text(detail).font(.caption2).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.7)
+            }
+        }.frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func prayerRow(_ row: WidgetPrayerTime) -> some View {
         HStack {
-            Label(prayer.title, systemImage: prayer.symbol).font(.subheadline)
+            Label(row.title, systemImage: row.symbol).font(.subheadline)
             Spacer()
-            Text(values(day)[prayer]?.description ?? "—").font(.subheadline.weight(.medium)).monospacedDigit()
+            if !row.detail.isEmpty { Text(row.detail).font(.caption2).foregroundStyle(.secondary) }
+            Text(row.time?.description ?? "—").font(.subheadline.weight(.medium)).monospacedDigit()
         }
     }
 }

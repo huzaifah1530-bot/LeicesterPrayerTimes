@@ -102,6 +102,14 @@ public struct PrayerDay: Identifiable, Codable, Sendable {
     public var jamaat: [Prayer: ClockTime]
     public var beginning: [Prayer: ClockTime]
     public var id: Date { date }
+
+    public var usesMaghribJamaatForBeginning: Bool { beginning[.maghrib] == nil && jamaat[.maghrib] != nil }
+    /// Preserve published data separately from the user-requested Maghrib fallback.
+    public var effectiveBeginning: [Prayer: ClockTime] {
+        var times = beginning
+        if times[.maghrib] == nil { times[.maghrib] = jamaat[.maghrib] }
+        return times
+    }
 }
 
 public struct JummahEntry: Identifiable, Codable, Sendable {

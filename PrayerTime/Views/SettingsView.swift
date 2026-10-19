@@ -124,10 +124,11 @@ struct DataInformationView: View {
             }
             Section("Understanding your times") {
                 explanation("Jamaat", "The published congregation time at your selected mosque.")
-                explanation("Beginning", "The start of the prayer period, as published by your mosque. Dawn is also labelled Sehri End on the source.")
+                explanation("Beginning", "The start of the prayer period, as published by your mosque. Dawn is also labelled Sehri End on the source. When Maghrib has no separate beginning time, the app uses its published jamaat time as a fallback; a separately published beginning time always takes priority.")
                 explanation("Dhuhr & Isha", "The source uses the spellings Zohar and Eisha. These are shown as Dhuhr and Isha in the app.")
-                explanation("Shafi times", "Shown separately when your mosque publishes them. The app does not calculate or substitute times.")
+                explanation("Shafi times", "Shown separately when your mosque publishes them. The app does not calculate missing Shafi times.")
                 explanation("Jummah", "Bayaan, Azaan and Khutba are separate stages, shown with the labels and values published by your mosque.")
+                explanation("Friday widgets", "Jamaat widgets replace the Dhuhr slot with the mosque's Jummah services on Fridays in UK time. If an actual prayer time is not published, the widget shows the Khutba time, or another available programme stage, with that stage clearly labelled. Beginning widgets retain Dhuhr.")
             }
             Section("Updates & offline access") {
                 Text("Times refresh when you open the app, return to it, or pull down on Home. The app checks again after 15 minutes while open. Your last successful timetable stays on this device for offline access.")

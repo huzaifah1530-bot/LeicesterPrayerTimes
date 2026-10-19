@@ -45,7 +45,7 @@ struct NotificationSettingsView: View {
             } header: {
                 Text("Scheduled reminders")
             } footer: {
-                Text("iOS limits pending reminders. The nearest 63 are scheduled, using your mosque's published times. Open the app regularly to refill them and load each new month's timetable. Missing times never generate reminders.")
+                Text("iOS limits pending reminders. The nearest 63 are scheduled. Open the app regularly to refill them and load each new month's timetable. Maghrib beginning uses jamaat when no separate time is published; other missing times never generate reminders.")
             }
         }
         .navigationTitle("Notifications").navigationBarTitleDisplayMode(.inline)

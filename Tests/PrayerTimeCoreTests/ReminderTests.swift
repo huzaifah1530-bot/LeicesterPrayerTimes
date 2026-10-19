@@ -23,8 +23,17 @@ struct ReminderTests {
     @Test func disabledOrUnpublishedTimesNeverGenerateReminders() throws {
         let now = ISO8601DateFormatter().date(from: "2026-10-01T00:00:00Z")!
         let rules = [ReminderRule(prayer: .fajr, kind: .jamaat),
-                     ReminderRule(prayer: .maghrib, kind: .beginning, enabled: true)]
+                     ReminderRule(prayer: .sunrise, kind: .jamaat, enabled: true)]
         #expect(ReminderPlanner.plan(schedule: try schedule(), rules: rules, now: now).isEmpty)
+    }
+
+    @Test func maghribBeginningRemindersUseTheJamaatFallback() throws {
+        let now = ISO8601DateFormatter().date(from: "2026-10-01T00:00:00Z")!
+        let rule = ReminderRule(prayer: .maghrib, kind: .beginning, enabled: true, minutesBefore: 10)
+        let schedule = try schedule()
+        let event = try #require(ReminderPlanner.plan(schedule: schedule, rules: [rule], now: now).first)
+        #expect(event.eventDate == schedule.days[0].jamaat[.maghrib]?.on(schedule.days[0].date))
+        #expect(event.fireDate == event.eventDate.addingTimeInterval(-600))
     }
 
     @Test func queueIsBoundedChronologicalAndContainsNoPastTriggers() throws {

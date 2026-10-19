@@ -19,7 +19,9 @@ Apple system colours, SF Symbols and native Liquid Glass navigation.
 
 No account, API key, location permission, hosted backend or analytics. Selection and
 the last successful timetable stay on the device. Missing source values remain
-missing. All prayer dates/times use **Europe/London**, including DST, even abroad.
+missing, except Maghrib beginning falls back to jamaat when no separate beginning
+time is published. A published beginning always takes priority. All prayer
+dates/times use **Europe/London**, including DST, even abroad.
 
 ## Build from Windows with GitHub
 
@@ -53,7 +55,7 @@ The app schedules the nearest 63 enabled reminders, within the published timetab
 and refills the queue when opened or refreshed. Open it regularly, especially at a
 new month. iOS controls delivery, Focus behaviour and widget background refresh.
 Changing mosque removes old pending reminders. No reminders are invented for
-unpublished times. Widgets can fetch the selected mosque's latest timetable in the
+unpublished times, apart from the documented Maghrib beginning fallback. Widgets can fetch the selected mosque's latest timetable in the
 background, but this does not refill the app's local notification queue.
 
 GitHub standard hosted runners are free for public repositories; private repositories
@@ -90,8 +92,22 @@ every 15 minutes while Home is open, at UK day changes, and on pull to refresh.
 No bulk background crawling. DOM parsing uses pinned SwiftSoup 2.8.8, rather than
 regular expressions. Unexpected columns, invalid dates and malformed non-empty
 time cells produce an error. Empty cells never shift the columns. Beginning times
-are never inherited from another mosque. The source doesn't publish a separate
-Maghrib beginning column; the app does not infer it from jamaat.
+are never inherited from another mosque. For Maghrib only, the app uses jamaat as
+a beginning-time fallback when the mosque hasn't published a separate beginning
+time. Raw source values remain intact. This applies to the app, widgets and reminders.
+
+On Fridays (Europe/London), jamaat widgets replace Dhuhr with the mosque's published
+Jummah services. All services appear in the medium/large timetable, and the next-event
+summary moves to the next available service. The actual jamaat/prayer time is preferred
+when published; otherwise Khutba, Azaan or Bayaan is shown with its original stage label.
+Missing Jummah is shown as not published; a normal Dhuhr time is never relabelled as
+Jummah. Beginning widgets retain the Dhuhr prayer window.
+
+Research: [East London Mosque explains Friday prayer replacing Zuhr](https://www.eastlondonmosque.org.uk/prayers).
+[Bashir Ahmed Masjid distinguishes khutbah from the actual prayer time](https://www.bashirahmedmasjid.co.uk/news/dynamic/26/important-notice-change-to-jumu-ah-prayer-from-friday-24th-september).
+The mosque-specific service labels and times come from Salaah Times, not these example
+mosques. Programmes can change, including around BST/GMT changes; widgets periodically
+fetch the current published programme.
 
 The source dates omit years; the parser selects a matching weekday/date within
 62 days of retrieval, including year boundaries. Saved data retains the resolved
