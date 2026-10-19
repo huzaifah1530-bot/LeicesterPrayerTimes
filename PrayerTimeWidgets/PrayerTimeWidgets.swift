@@ -15,6 +15,7 @@ struct PrayerWidgetConfiguration: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Prayer Time" }
     static var description: IntentDescription { "Show beginning or jamaat times for your selected mosque." }
     @Parameter(title: "Times", default: .jamaat) var times: WidgetTimes
+    @Parameter(title: "Mosque") var mosque: WidgetMosque?
 }
 
 struct PrayerEntry: TimelineEntry {
@@ -40,22 +41,30 @@ struct PrayerProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> PrayerEntry { PrayerEntry(date: .now, snapshot: nil, times: .jamaat) }
 
     func snapshot(for configuration: PrayerWidgetConfiguration, in context: Context) async -> PrayerEntry {
-        PrayerEntry(date: .now, snapshot: WidgetData.read(), times: configuration.times)
+        let snapshot = await loadSnapshot(configuration)
+        return PrayerEntry(date: .now, snapshot: snapshot, times: configuration.times)
     }
 
-    func timeline(for configuration: PrayerWidgetConfiguration, in context: Context) async -> Timeline<PrayerEntry> {
-        var snapshot = WidgetData.read()
-        let needsRefresh = snapshot?.schedule.map { Date.now.timeIntervalSince($0.fetchedAt) > 1800 } ?? true
+    private func loadSnapshot(_ configuration: PrayerWidgetConfiguration) async -> WidgetSnapshot? {
+        var snapshot = selectedSnapshot(configuration)
+        let needsRefresh = snapshot?.schedule.map { Date.now.timeIntervalSince($0.fetchedAt) > 1800 || $0.day(on: .now) == nil } ?? true
         if let current = snapshot, needsRefresh {
-            if let fresh = try? await SalaahClient().schedule(for: current.mosque),
-               WidgetData.read()?.mosque.id == current.mosque.id {
+            if let fresh = try? await SalaahClient().schedule(for: current.mosque) {
                 let updated = WidgetSnapshot(mosque: current.mosque, schedule: fresh)
-                try? WidgetData.save(updated)
+                WidgetLocalCache.save(fresh)
+                if WidgetData.read()?.mosque.id == current.mosque.id { try? WidgetData.save(updated) }
                 snapshot = updated
             }
         }
         // Re-read so a mosque changed while networking never gets replaced by old data.
-        snapshot = WidgetData.read() ?? snapshot
+        if configuration.mosque == nil {
+            if let shared = WidgetData.read(), shared.mosque.id != snapshot?.mosque.id { snapshot = shared }
+        }
+        return snapshot
+    }
+
+    func timeline(for configuration: PrayerWidgetConfiguration, in context: Context) async -> Timeline<PrayerEntry> {
+        let snapshot = await loadSnapshot(configuration)
         let now = Date.now
         let horizon = now.addingTimeInterval(86_400)
         var dates = [now]
@@ -75,6 +84,17 @@ struct PrayerProvider: AppIntentTimelineProvider {
         let entries = Set(dates).sorted().map { PrayerEntry(date: $0, snapshot: snapshot, times: configuration.times) }
         return Timeline(entries: entries, policy: .after(now.addingTimeInterval(1800)))
     }
+
+    private func selectedSnapshot(_ configuration: PrayerWidgetConfiguration) -> WidgetSnapshot? {
+        if let mosque = configuration.mosque?.mosque {
+            let shared = WidgetData.read()
+            let local = WidgetLocalCache.read(mosque)
+            let schedule = [shared?.schedule, local].compactMap { $0 }
+                .filter { $0.mosque.id == mosque.id }.max { $0.fetchedAt < $1.fetchedAt }
+            return WidgetSnapshot(mosque: mosque, schedule: schedule)
+        }
+        return WidgetData.read()
+    }
 }
 
 struct PrayerWidgetView: View {
@@ -87,11 +107,11 @@ struct PrayerWidgetView: View {
             case .accessoryInline:
                 if let next = entry.next {
                     Label("\(next.prayer.title) \(UKClock.timeLabel(next.date))", systemImage: next.prayer.symbol)
-                } else { Text("Open Prayer Time") }
+                } else { Text("Edit widget to choose mosque") }
             case .accessoryCircular:
                 VStack(spacing: 2) {
                     Image(systemName: entry.next?.prayer.symbol ?? "building.2")
-                    Text(entry.next?.prayer.title ?? "Prayer").font(.caption2)
+                    Text(entry.next?.prayer.title ?? "Edit widget").font(.caption2)
                     if let next = entry.next { Text(UKClock.timeLabel(next.date)).font(.caption2).monospacedDigit() }
                 }.minimumScaleFactor(0.7)
             case .accessoryRectangular:
@@ -102,7 +122,7 @@ struct PrayerWidgetView: View {
                         Text(entry.times == .jamaat ? "Jamaat" : "Beginning").font(.caption2)
                     } else {
                         Label("Prayer Time", systemImage: "building.2")
-                        Text("Open app to load times").font(.caption)
+                        Text(entry.snapshot == nil ? "Edit widget to choose mosque" : "Tap to refresh times").font(.caption)
                     }
                 }
             default:
@@ -148,7 +168,7 @@ struct PrayerWidgetView: View {
                 Spacer(minLength: 0)
                 Image(systemName: "clock.badge.questionmark").font(.title2)
                 Text(entry.snapshot == nil ? "Choose your mosque" : "Refresh prayer times").font(.headline)
-                Text("Open Prayer Time").font(.caption).foregroundStyle(.secondary)
+                Text(entry.snapshot == nil ? "Touch and hold → Edit Widget → Mosque" : "Open Prayer Time to check your connection").font(.caption).foregroundStyle(.secondary)
                 Spacer(minLength: 0)
             }
         }

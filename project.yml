@@ -33,6 +33,8 @@ targets:
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: "AppIcon-indigo AppIcon-purple AppIcon-pink AppIcon-red AppIcon-orange AppIcon-yellow AppIcon-green AppIcon-teal"
+        ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: PrayerTime/PrayerTime.entitlements
     scheme:

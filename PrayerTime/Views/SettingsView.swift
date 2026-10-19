@@ -95,6 +95,7 @@ struct MosquePickerView: View {
 }
 
 struct AppearanceView: View {
+    @Environment(AccentSettings.self) private var accents
     @AppStorage("appearance") private var appearance = "system"
     var body: some View {
         Form {
@@ -105,6 +106,11 @@ struct AppearanceView: View {
                     Label("Dark", systemImage: "moon").tag("dark")
                 }.pickerStyle(.inline).labelsHidden()
             } footer: { Text("Automatic follows your iPhone or iPad's appearance. Text size, contrast and glass effects follow your system accessibility settings.") }
+            Section {
+                NavigationLink { AccentColourView() } label: {
+                    LabeledContent("Accent colour & icon", value: accents.selected.title)
+                }
+            }
         }.navigationTitle("Appearance").navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -145,7 +151,7 @@ struct AboutView: View {
         List {
             Section {
                 VStack(spacing: 12) {
-                    Image("MosqueMark").resizable().scaledToFit().frame(width: 64, height: 64).accessibilityHidden(true)
+                    Image("MosqueMark").resizable().renderingMode(.template).scaledToFit().frame(width: 64, height: 64).foregroundStyle(.tint).accessibilityHidden(true)
                     Text("Prayer Time").font(.title2.bold())
                     Text("A little closer to your mosque.").font(.subheadline).foregroundStyle(.secondary)
                 }.frame(maxWidth: .infinity).padding(.vertical, 20)

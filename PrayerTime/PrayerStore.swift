@@ -120,7 +120,7 @@ final class PrayerStore {
             try WidgetData.save(WidgetSnapshot(mosque: selected, schedule: schedule))
             widgetError = nil
         } catch {
-            widgetError = "Widget sharing is unavailable. The app and widget must be signed with the same App Group."
+            widgetError = "Automatic mosque sharing is unavailable. Choose your mosque in Edit Widget instead."
         }
         WidgetCenter.shared.reloadAllTimelines()
     }

@@ -14,9 +14,9 @@ struct WidgetSettingsView: View {
                 Text("Touch and hold your Lock Screen, tap Customise, then tap the widget area. Choose Prayer Time for an inline, circular or rectangular next-prayer widget.")
             }
             Section("Your timetable") {
-                Text("Widgets use the mosque selected in Settings. Edit a widget to choose Beginning or Jamaat times. Tap a widget to open the app.")
+                Text("Touch and hold a widget, choose Edit Widget, then choose Mosque. Each widget can fetch its own mosque's timetable, even when shared app data is unavailable. You can also choose Beginning or Jamaat times.")
                 Text("Widgets update at prayer changes and periodically check for a fresh timetable. iOS controls background refresh timing. If no current timetable is available, the widget asks you to open Prayer Time.")
-                if let error = store.widgetError { Text(error).foregroundStyle(.secondary) }
+                if store.widgetError != nil { Text("Automatic mosque sharing is unavailable on this installation. Choose the mosque in Edit Widget instead.").foregroundStyle(.secondary) }
             }
         }.navigationTitle("Widgets").navigationBarTitleDisplayMode(.inline)
     }

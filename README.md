@@ -14,6 +14,8 @@ Apple system colours, SF Symbols and native Liquid Glass navigation.
   prayer, with your own number of minutes before each event (zero means on time).
 - **Widgets:** small, medium and large Home Screen widgets, plus inline, circular
   and rectangular Lock Screen widgets. Edit each widget to choose Beginning or Jamaat.
+- **Accent colour:** Settings → Appearance → Accent colour & icon. Nine Apple system
+  colours, with matching alternate mosque icons and contrasting plain backgrounds.
 
 No account, API key, location permission, hosted backend or analytics. Selection and
 the last successful timetable stay on the device. Missing source values remain
@@ -40,9 +42,11 @@ if your signing setup needs a different identifier.
 The IPA includes the WidgetKit extension. **When signing, preserve and provision
 the App Group `group.uk.prayertime.app` for both the app and widget extension.**
 If your signing service remaps identifiers, use the same remapped App Group in both
-targets and `WidgetData.groupID`. Signing without shared-container support leaves
-the main app usable, but widgets cannot read your selected mosque. Settings → Widgets
-reports a shared-container problem when the app cannot save widget data.
+targets and `WidgetData.groupID`. This enables automatic mosque sharing. **Widgets
+also work without an App Group:** touch and hold the widget → Edit Widget → Mosque,
+then select your masjid. The widget fetches its timetable directly and keeps its own
+offline copy. Each widget can use a different mosque. If an older widget still shows
+the setup message after updating, edit its configuration or remove and re-add it.
 
 Notifications are local and require permission requested from Settings → Notifications.
 The app schedules the nearest 63 enabled reminders, within the published timetable,

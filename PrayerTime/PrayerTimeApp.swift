@@ -5,6 +5,7 @@ import PrayerTimeCore
 struct PrayerTimeApp: App {
     @UIApplicationDelegateAdaptor(NotificationDelegate.self) private var notificationDelegate
     @State private var store = PrayerStore()
+    @State private var accents = AccentSettings()
     @AppStorage("appearance") private var appearance = "system"
     @Environment(\.scenePhase) private var scenePhase
 
@@ -12,6 +13,8 @@ struct PrayerTimeApp: App {
         WindowGroup {
             RootView()
                 .environment(store)
+                .environment(accents)
+                .tint(accents.selected.color)
                 .preferredColorScheme(appearance == "system" ? nil : (appearance == "dark" ? .dark : .light))
                 .task { await store.start() }
                 .onChange(of: scenePhase) { _, phase in
